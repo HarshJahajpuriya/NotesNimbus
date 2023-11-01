@@ -10,6 +10,7 @@ connectToMongo();
 
 app.use(express.json())
 
+// Available Routes
 app.use("/api/auth", authRouter) 
 app.use("/api/notes", notesRouter) 
 

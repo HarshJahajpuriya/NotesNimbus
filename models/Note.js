@@ -1,19 +1,23 @@
 const { Schema, SchemaTypes, model } = require("mongoose");
 
-const UserSchema = new Schema({
-  name: {
+const NoteSchema = new Schema({
+  user: {
+    type: SchemaTypes.ObjectId,
+    ref: 'user'
+  },
+  title: {
     type: SchemaTypes.String,
     minLength: 3,
     required: true
   },
-  email: {
+  description: {
     type: SchemaTypes.String,
-    required: true,
-    unique: true
-  },
-  password: {
-    type: SchemaTypes.String,
+    minLength: 5,
     required: true
+  },
+  tag: {
+    type: SchemaTypes.String,
+    default: "General"
   },
   date: {
     type: SchemaTypes.Date,
@@ -21,4 +25,4 @@ const UserSchema = new Schema({
   }
 })
 
-module.exports = model('user', UserSchema)
+module.exports = model('note', NoteSchema);
